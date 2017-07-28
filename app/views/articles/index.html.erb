@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<h1>日記帳</h1>
+
+<table border='0'>
+<!--
+  <thead>
+    <tr>
+      <th>タイトル</th>
+    </tr>
+    <tr>
+      <th>内容</th>
+      <th>日付</th>
+      <th>更新日</th>
+      <th>Is public</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+-->
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.post_date %></td>
+      </tr>
+      <tr>
+        <td><%= article.title %></td>
+      </tr>
+      <tr>
+        <td><%= article.body %></td>
+      </tr>
+      <tr>
+<!--        <td><#%= article.is_public %></td> -->
+<!--        <td><#%= article.user %></td> -->
+        <td><%= link_to 'もっと見る', article %></td>
+        <td><%= link_to '編集', edit_article_path(article) %></td>
+        <td><%= link_to '消す', article, method: :delete, data: { confirm: '本当に消しますか？?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新規作成', new_article_path %>
+<br>
+<%= image_tag 'DSC_0195.JPG', :size => '200x300' %>
+<!--<img alt="Flower" height="20" src="/assets/DSC_0195.JPG"  width="30" /> -->
+
+
+<%# calendar = make_calendar %>
+<%# 最初の週 %>
+<%# calendar[:start_week].each do |day| %>
+  <%#= day %>
+<%# end %>
+<%# 間の週 %>
+<%# calendar[:middle_week].each do |middle_week| %>
+  <%# middle_week.each do |day| %>
+    <%#= day %>
+  <%# end %>
+  <%# この辺で折り返しさせたい %>
+<%# end %>
+<%# 最後の週 %>
+<%#calendar[:end_week].each do |end_week| %>
+  <%#= day %>
+<%# end %>
